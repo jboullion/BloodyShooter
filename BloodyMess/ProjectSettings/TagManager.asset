@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - gpm
+  - im
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - ally
+  - enemy
+  - ammo
+  - barrier
+  - halfBarrier
+  - door
+  - trash
+  - explosible
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: ground
+    uniqueID: 1057286055
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: body
+    uniqueID: 3092970255
+    locked: 0
+  - name: weapon
+    uniqueID: 1396331079
+    locked: 0
+  - name: fx
+    uniqueID: 596942405
+    locked: 0
+  - name: overlay
+    uniqueID: 3717784975
+    locked: 0

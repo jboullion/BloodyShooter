@@ -11,13 +11,21 @@ public class zombieBehavior : MonoBehaviour {
 	[Tooltip("number of pieces to fall to")] public int numberOfPieces;
 	List<GameObject> pieces;
 
+	[Tooltip("Gameobjects with this layers will be considered enemies")]
+	public LayerMask ally;
+	[Tooltip("max distance between character and enemy, where they see each other")]
+	public float allyRadius;
+
+	Vector2 offset; // box collider offset
+	Vector2 size; // box collider size
+
 	public Animator an;
 	public SpriteRenderer s;
 	public SpriteRenderer hs;
 	public Animator ha;
 	public Rigidbody2D rb;
 
-	gamePlayManager gpm; // stores gameplay refference
+	//gamePlayManager gpm; // stores gameplay refference
 
 	int k = 1;
 	bool dead;
@@ -28,10 +36,19 @@ public class zombieBehavior : MonoBehaviour {
 		prepareZombie ();
 
 	}
+
+	void Start()
+	{
+		size = gameObject.GetComponent<BoxCollider2D>().size; // determines size
+		offset = gameObject.GetComponent<BoxCollider2D>().offset; // determines offset
+		
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		setLayer ();
+
+		findPlayers(); // attract enemies to follow character
 	}
 
 	public void prepareZombie ()
@@ -46,7 +63,7 @@ public class zombieBehavior : MonoBehaviour {
 			pieces [i].SetActive (false);
 		}
 
-		gpm = GameObject.FindGameObjectWithTag ("gpm").GetComponent<gamePlayManager>();
+		//gpm = GameObject.FindGameObjectWithTag ("gpm").GetComponent<gamePlayManager>();
 
 	}
 
@@ -97,7 +114,7 @@ public class zombieBehavior : MonoBehaviour {
 	{
 		dead = true;
 		throwPieces ();
-		gpm.enemyDied ();
+		//gpm.enemyDied ();
 		//this.gameObject.SetActive (false);
 	}
 
@@ -129,5 +146,59 @@ public class zombieBehavior : MonoBehaviour {
 		dead = false;
 		health = 100;
 	}
+
+	void findPlayers() // attacks close enemies
+	{
+		Collider2D[] en = Physics2D.OverlapCircleAll((Vector2)transform.position, allyRadius, ally); // enemies around
+		if (en.Length > 0)
+		{
+			
+			float distance = allyRadius * 100;
+			GameObject closestPlayer = null;
+			foreach (Collider2D currenten in en)
+			{
+				
+				Vector3 distanceCheck = currenten.gameObject.transform.position - transform.position;
+				float currentDistance = distanceCheck.sqrMagnitude;
+				Debug.Log("currentDistance: "+ currentDistance);
+				Debug.Log("distance: " + distance);
+				if (currentDistance < distance )
+				{
+					closestPlayer = currenten.gameObject;
+
+					distance = currentDistance;
+
+				}
+			}
+
+			if (closestPlayer)
+			{
+				move(closestPlayer.transform.position);
+			}
+			
+		}
+
+	}
+
+	/*
+	public void applyHealth(float newHealth) // applies health;
+	{
+		if (health + newHealth < initialHealth) // conditions makes health not jump over initial health
+		{
+			health += newHealth;
+		}
+		else
+		{
+			health = initialHealth;
+		}
+		if (health <= 0 && !dead) // if health is above zero
+		{
+			die();
+		}
+
+		//healthLine.sizeDelta = healthLine.sizeDelta + Vector2.right * newHealth * healthPointLength; // refreshes health bar
+
+	}
+	*/
 
 }

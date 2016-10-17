@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11444452}
   - 212: {fileID: 21219784}
   - 95: {fileID: 9507338}
+  - 58: {fileID: 58000010972941496}
   m_Layer: 10
   m_Name: bullet
   m_TagString: Untagged
@@ -151,3 +152,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157942}
   m_IsPrefabParent: 1
+--- !u!58 &58000010972941496
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 30

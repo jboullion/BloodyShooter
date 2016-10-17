@@ -25,10 +25,10 @@ public class characterBehaviour : MonoBehaviour {
 
 	[HideInInspector] public bool dead; // if character is dead
 
-	[Tooltip("Gameobjects with this layers will be considered enemies")] public LayerMask enemy;
+	//[Tooltip("Gameobjects with this layers will be considered enemies")] public LayerMask enemy;
 	[Tooltip("Gameobjects with this layers will be considered friends")] public LayerMask ally;
 	[Tooltip("Gameobjects with this layers will be considered doors")] public LayerMask door;
-	[Tooltip("max distance between character and enemy, where they see each other")] public float enemyRadius;
+	//[Tooltip("max distance between character and enemy, where they see each other")] public float enemyRadius;
 
 	RectTransform healthLine; // stores UI element, which represents health line
 	float fullHealthLineLength; 
@@ -61,11 +61,18 @@ public class characterBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 		if (!isPlayer) // if not a player character
 		{
-			checkForEnemies (); // checks for enemies
+			//checkForEnemies (); // checks for enemies
 		}
-		attractEnemies (); // attract enemies to follow character
+		//attractEnemies (); // attract enemies to follow character
 		setLayerOrder (); // refreshes sorting layer
-	} 
+
+
+	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log(collision.collider.gameObject.layer);
+	}
 
 	void prepareFighter() // determines variables
 	{
@@ -82,6 +89,8 @@ public class characterBehaviour : MonoBehaviour {
 	{
 		
 		rb.velocity = direction * speed; // applies velocity
+
+		animator.SetInteger("state", 1); // sets run animation
 
 		if (!shooting) // if character is not shooting
 		{
@@ -154,7 +163,7 @@ public class characterBehaviour : MonoBehaviour {
 	{
 		if (rb.velocity == Vector2.zero) // if character stays
 		{
-			animator.SetInteger ("state", 0); // sets idle animation
+			animator.SetInteger("state", 0); // sets idle animation
 		}
 	}
 
@@ -277,15 +286,24 @@ public class characterBehaviour : MonoBehaviour {
 			die ();
 		}
 
-		healthLine.sizeDelta = healthLine.sizeDelta + Vector2.right * newHealth * healthPointLength; // refreshes health bar
+		//healthLine.sizeDelta = healthLine.sizeDelta + Vector2.right * newHealth * healthPointLength; // refreshes health bar
 
+	}
+
+	public void applyDamage(float plusHealth)
+	{
+		health += plusHealth;
+		if (health <= 0 && !dead)
+		{
+			die();
+		}
 	}
 
 	void die () // character die function
 	{
 		dead = true;
-		GameObject.Find ("levelDesigner").GetComponent<levelDesigner> ().fail (); // tells level designer that player failed
-		GameObject.Find ("gamePlayManager").GetComponent<gamePlayManager> ().fail (); // tells game play manager that player failed
+		//GameObject.Find ("levelDesigner").GetComponent<levelDesigner> ().fail (); // tells level designer that player failed
+		//GameObject.Find ("gamePlayManager").GetComponent<gamePlayManager> ().fail (); // tells game play manager that player failed
 		gameObject.SetActive (false); // disables player
 	}
 
@@ -298,6 +316,7 @@ public class characterBehaviour : MonoBehaviour {
 		gameObject.SetActive (true); // enables character
 	}
 
+	/*
 	void checkForEnemies () // looks for enemies around to shoot
 	{
 		Collider2D en = Physics2D.OverlapCircle ((Vector2) transform.position + offset, enemyRadius, enemy); // enemy
@@ -306,7 +325,8 @@ public class characterBehaviour : MonoBehaviour {
 			attack ((en.transform.position - transform.position).normalized); // attacks enemy
 		}
 	}
-
+	*/
+	/*
 	void attractEnemies() // attracks enemies around && checks for close enemies
 	{
 		Collider2D[] en = Physics2D.OverlapCircleAll ((Vector2) transform.position + offset, enemyRadius, enemy); // enemies around
@@ -325,7 +345,7 @@ public class characterBehaviour : MonoBehaviour {
 		}
 
 	}
-
+	*/
 	void setLayerOrder () // refreshes sorting layer according to Y position
 	{
 		float p = transform.position.y * 10;

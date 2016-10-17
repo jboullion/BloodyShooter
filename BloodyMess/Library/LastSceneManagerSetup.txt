@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Shoot'em Up 2D Starter Kit/Scenes/Development.unity
+- path: Assets/Shoot'em Up 2D Starter Kit/Scenes/Assets.unity
   isLoaded: 1
   isActive: 1

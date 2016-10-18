@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -600, y: -570, z: 0}
+  m_LocalPosition: {x: 213, y: 445, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -122,9 +122,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -80}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 100, y: 20}
+  m_Size: {x: 100, y: 170}
 --- !u!95 &9517294
 Animator:
   serializedVersion: 3
@@ -151,7 +151,7 @@ Animator:
   m_GameObject: {fileID: 191260}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1bc09f812d5797d4b8617f7a88c15e9a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -193,6 +193,10 @@ MonoBehaviour:
   speed: 225
   piece: {fileID: 134134, guid: e7eb24115c2f21845a44b2e9d0ae6e0b, type: 2}
   numberOfPieces: 10
+  ally:
+    serializedVersion: 2
+    m_Bits: 256
+  allyRadius: 2000
   an: {fileID: 9557368}
   s: {fileID: 21229762}
   hs: {fileID: 0}

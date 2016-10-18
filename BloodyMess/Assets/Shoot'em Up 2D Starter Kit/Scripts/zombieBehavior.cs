@@ -160,8 +160,8 @@ public class zombieBehavior : MonoBehaviour {
 				
 				Vector3 distanceCheck = currenten.gameObject.transform.position - transform.position;
 				float currentDistance = distanceCheck.sqrMagnitude;
-				Debug.Log("currentDistance: "+ currentDistance);
-				Debug.Log("distance: " + distance);
+				//Debug.Log("currentDistance: "+ currentDistance);
+				//Debug.Log("distance: " + distance);
 				if (currentDistance < distance )
 				{
 					closestPlayer = currenten.gameObject;

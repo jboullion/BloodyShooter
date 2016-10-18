@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 40405a48cac924c45976993a31099372
-timeCreated: 1476668740
+timeCreated: 1476671892
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -766,9 +766,9 @@ TextureImporter:
       name: SpriteSheet_61
       rect:
         serializedVersion: 2
-        x: 348
+        x: 346
         y: 79
-        width: 13
+        width: 15
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -779,9 +779,9 @@ TextureImporter:
       name: SpriteSheet_62
       rect:
         serializedVersion: 2
-        x: 380
+        x: 378
         y: 79
-        width: 13
+        width: 15
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1091,9 +1091,9 @@ TextureImporter:
       name: SpriteSheet_88
       rect:
         serializedVersion: 2
-        x: 412
+        x: 410
         y: 79
-        width: 13
+        width: 15
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

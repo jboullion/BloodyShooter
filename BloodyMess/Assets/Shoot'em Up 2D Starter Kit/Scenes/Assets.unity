@@ -410,6 +410,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &745533227 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11472728, guid: 718660b72efd1ca429064300033c32a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2091506202}
+  m_Script: {fileID: 11500000, guid: f6f261f24469be245bdf06029433c42f, type: 3}
 --- !u!1001 &806883874
 Prefab:
   m_ObjectHideFlags: 0
@@ -559,12 +565,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012519225550, guid: 971e98a689eb44845b5105652eb04a89,
     type: 2}
   m_PrefabInternal: {fileID: 455024891}
---- !u!114 &1915098255 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11416970, guid: abc3b945bc138df47bbc739c18c15115,
-    type: 2}
-  m_PrefabInternal: {fileID: 806883874}
-  m_Script: {fileID: 11500000, guid: f6f261f24469be245bdf06029433c42f, type: 3}
 --- !u!1001 &1916396392
 Prefab:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb8f23e526989f4f875a73f72c889f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 1915098255}
+  p: {fileID: 745533227}
 --- !u!4 &2085273034
 Transform:
   m_ObjectHideFlags: 0

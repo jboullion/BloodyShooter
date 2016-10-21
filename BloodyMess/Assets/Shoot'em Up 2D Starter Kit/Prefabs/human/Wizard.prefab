@@ -155,7 +155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 100, y: 180}
+  m_Size: {x: 100, y: 100}
 --- !u!82 &8289862
 AudioSource:
   m_ObjectHideFlags: 1
@@ -315,7 +315,7 @@ MonoBehaviour:
   shootInterval: 0.5
   shotFire: {fileID: 21294118}
   shotSounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 2f397aae8b3376441baafd67bf017985, type: 3}
 --- !u!212 &21256524
 SpriteRenderer:
   m_ObjectHideFlags: 1

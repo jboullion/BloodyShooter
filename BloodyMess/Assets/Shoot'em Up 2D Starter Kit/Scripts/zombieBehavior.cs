@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class zombieBehavior : MonoBehaviour {
 
 	[Tooltip("health points")] public float health;
+	float initialHealth;
 	[Tooltip("movement speed")] public float speed;
 
 	[Tooltip("piece prefab (visual effect)")] public GameObject piece;
@@ -19,7 +20,7 @@ public class zombieBehavior : MonoBehaviour {
 	Vector2 offset; // box collider offset
 	Vector2 size; // box collider size
 
-	public Animator an;
+	//public Animator an;
 	public SpriteRenderer s;
 	public SpriteRenderer hs;
 	public Animator ha;
@@ -41,7 +42,7 @@ public class zombieBehavior : MonoBehaviour {
 	{
 		size = gameObject.GetComponent<BoxCollider2D>().size; // determines size
 		offset = gameObject.GetComponent<BoxCollider2D>().offset; // determines offset
-		
+		initialHealth = health;
 	}
 	
 	// Update is called once per frame
@@ -77,7 +78,7 @@ public class zombieBehavior : MonoBehaviour {
 	public void move (Vector3 pos)
 	{
 		Vector3 direction = (pos - transform.position).normalized;
-		an.SetInteger ("state", 1);
+		//an.SetInteger ("state", 1);
 		ha.SetInteger ("state", 1);
 		if (direction.x > 0) 
 		{
@@ -115,7 +116,7 @@ public class zombieBehavior : MonoBehaviour {
 		dead = true;
 		throwPieces ();
 		//gpm.enemyDied ();
-		//this.gameObject.SetActive (false);
+		this.gameObject.SetActive (false);
 	}
 
 	void throwPieces () // zombie falls to pieces
@@ -180,7 +181,7 @@ public class zombieBehavior : MonoBehaviour {
 
 	}
 
-	/*
+	
 	public void applyHealth(float newHealth) // applies health;
 	{
 		if (health + newHealth < initialHealth) // conditions makes health not jump over initial health
@@ -199,6 +200,6 @@ public class zombieBehavior : MonoBehaviour {
 		//healthLine.sizeDelta = healthLine.sizeDelta + Vector2.right * newHealth * healthPointLength; // refreshes health bar
 
 	}
-	*/
+	
 
 }

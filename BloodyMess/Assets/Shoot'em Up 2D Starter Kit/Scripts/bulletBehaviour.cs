@@ -14,6 +14,13 @@ public class bulletBehaviour : MonoBehaviour {
 	[Tooltip("stores sprite renderer")] public SpriteRenderer sr;
 	bool hitted; // if bullet hitted something
 
+
+	[Tooltip("Sound made on contact")] public AudioClip audioHit = null;
+
+	private AudioManager audioManager = new AudioManager();
+	private bool bulletHitting = false;
+
+
 	public void applyDirection (Vector2 direction, float angle, Vector3 place) // applies shot info from weapon
 	{
 		hitted = false;
@@ -34,18 +41,27 @@ public class bulletBehaviour : MonoBehaviour {
 			t.transform.gameObject.SendMessage("applyDamage", damage, SendMessageOptions.DontRequireReceiver); // tells victim to apply damage
 			an.SetInteger ("state", 1); // sets hit animation
 			Invoke ("disable", 0.7f); // disables bullet in 0.7 seconds
+			if (!bulletHitting)
+			{
+				GetComponent<AudioSource>().PlayOneShot(audioHit);
+				Invoke("resetSound", audioHit.length);
+			}
+
 			actualSpeed = 0; // stops bullet
 		}
 		if (!sr.isVisible) // if bullet is out of view
 		{
-			disable (); // disables bullet
+			disable(); // disables bullet
 		}  
 	}
 
 	void disable () // disables bullet
 	{
-		gameObject.SetActive (false); 
+		gameObject.SetActive (false);
 	}
-		
 
+	void resetBulletSound()
+	{
+		bulletHitting = false;
+	}
 }

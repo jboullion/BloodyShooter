@@ -90,6 +90,7 @@ public class rangeWeaponBehaviour : MonoBehaviour, IWeapon {
 		Vector2 shootDirection = Quaternion.Euler (0, 0, s) * transform.right; 
 
 		shootedBullet.SetActive (true);
+		shootedBullet.GetComponent<SpriteRenderer>().enabled = true;
 		shootedBullet.GetComponent<bulletBehaviour>().applyDirection(shootDirection, angle, shootPlace);
 
 		if (shotFire) 
